@@ -1,0 +1,202 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6615,        192]
+NotebookOptionsPosition[      6372,        179]
+NotebookOutlinePosition[      6715,        194]
+CellTagsIndexPosition[      6672,        191]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PD", "=", ".5"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"s", "[", 
+   RowBox[{"t_", ",", "f_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"t", "^", ".6"}], "-", "f"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dt", "[", 
+    RowBox[{
+    "cl_", ",", "ps_", ",", "sg_", ",", "hf_", ",", "dp_", ",", "f_", ",", 
+     "flag_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"sv", ",", "basePt"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", "ps", "]"}], ",", 
+       RowBox[{
+        RowBox[{"sv", "=", 
+         RowBox[{"s", "[", 
+          RowBox[{"t", ",", "f"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Hue", "[", 
+         RowBox[{
+          RowBox[{"cl", " ", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{"Sin", "[", 
+               RowBox[{".02", " ", "t"}], "]"}]}], ")"}], "/", "2"}]}], ",", 
+          "1", ",", 
+          RowBox[{".3", "+", 
+           RowBox[{"sg", " ", ".3", " ", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"hf", " ", "sv"}], "]"}]}]}]}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"basePt", "=", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "sg"}], " ", 
+            RowBox[{"s", "[", 
+             RowBox[{"t", ",", "f"}], "]"}], " ", 
+            RowBox[{"Sin", "[", "sv", "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"-", "sg"}], " ", 
+            RowBox[{"s", "[", 
+             RowBox[{"t", ",", "f"}], "]"}], " ", 
+            RowBox[{"Cos", "[", "sv", "]"}]}], ",", 
+           RowBox[{"dp", "+", "sv"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Point", "[", "basePt", "]"}]}], ",", 
+       RowBox[{"If", "[", 
+        RowBox[{"flag", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Hue", "[", 
+            RowBox[{
+             RowBox[{"cl", " ", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{"Sin", "[", 
+                  RowBox[{".1", " ", "t"}], "]"}]}], ")"}], "/", "2"}]}], ",",
+              "1", ",", 
+             RowBox[{".6", "+", 
+              RowBox[{"sg", " ", ".4", " ", 
+               RowBox[{"Sin", "[", 
+                RowBox[{"hf", " ", "sv"}], "]"}]}]}]}], "]"}], ",", 
+           RowBox[{"PointSize", "[", 
+            RowBox[{"RandomReal", "[", ".01", "]"}], "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"basePt", "+", 
+             RowBox[{
+              RowBox[{"1", "/", "2"}], " ", 
+              RowBox[{
+               RowBox[{"RotationTransform", "[", 
+                RowBox[{
+                 RowBox[{"20", " ", "sv"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", 
+                    RowBox[{"Cos", "[", "sv", "]"}]}], ",", 
+                   RowBox[{"Sin", "[", "sv", "]"}], ",", "0"}], "}"}]}], 
+                "]"}], "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Sin", "[", "sv", "]"}], ",", 
+                 RowBox[{"Cos", "[", "sv", "]"}], ",", "0"}], "}"}], 
+               "]"}]}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], "}"}]}], "]"}]}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"frames", "=", 
+    RowBox[{"ParallelTable", "[", 
+     RowBox[{
+      RowBox[{"Graphics3D", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"dt", "[", 
+             RowBox[{"1", ",", ".01", ",", 
+              RowBox[{"-", "1"}], ",", "1", ",", "0", ",", "f", ",", "True"}],
+              "]"}], ",", 
+            RowBox[{"dt", "[", 
+             RowBox[{
+             ".45", ",", ".01", ",", "1", ",", "1", ",", "0", ",", "f", ",", 
+              "True"}], "]"}], ",", 
+            RowBox[{"dt", "[", 
+             RowBox[{"1", ",", ".005", ",", 
+              RowBox[{"-", "1"}], ",", "4", ",", ".2", ",", "f", ",", 
+              "False"}], "]"}], ",", 
+            RowBox[{"dt", "[", 
+             RowBox[{
+             ".45", ",", ".005", ",", "1", ",", "4", ",", ".2", ",", "f", ",",
+               "False"}], "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "200", ",", "PD"}], "}"}]}], "]"}], 
+        ",", 
+        RowBox[{"ViewPoint", "\[Rule]", "Left"}], ",", 
+        RowBox[{"BoxRatios", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1", ",", "1.3"}], "}"}]}], ",", 
+        RowBox[{"ViewVertical", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", 
+           RowBox[{"-", "1"}]}], "}"}]}], ",", 
+        RowBox[{"ViewCenter", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0.5", ",", "0.5", ",", "0.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0.5", ",", "0.55"}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "20"}], ",", "20"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "20"}], ",", "20"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "20"}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"Background", "\[Rule]", "Black"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"f", ",", "0", ",", "1", ",", ".01"}], "}"}]}], "]"}]}], ";"}],
+   "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<tree.gif\>\"", ",", "frames"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6277196592436438`*^9, 3.6277196592592435`*^9}}]
+},
+WindowSize->{706, 543},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 5811, 157, 492, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
